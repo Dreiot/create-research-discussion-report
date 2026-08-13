@@ -1,6 +1,6 @@
 ---
 name: create-research-discussion-report
-description: Create or substantially revise evidence-grounded Chinese academic advisor discussion reports in DOCX from project authorities, current reports, experiment summaries, and local artifacts. Use for project-stage reports, group-meeting discussion documents, method-and-experiment summaries, formula-heavy research status reports, or revisions that must reduce engineering noise, preserve negative evidence and claim boundaries, explain methods to readers outside the project, render formulas and inline variables as native Word OMML, normalize Chinese/English fonts, and end with concise decisions for a supervisor.
+description: Create or substantially revise evidence-grounded Chinese academic advisor discussion reports in DOCX from project authorities, current reports, experiment summaries, and local artifacts. Use for project-stage reports, group-meeting discussion documents, method-and-experiment summaries, formula-heavy research status reports, or revisions that must reduce engineering noise, preserve negative evidence and claim boundaries, explain initialization and end-to-end optimization flows to readers outside the project, render formulas and inline variables as native Word OMML, normalize Chinese/English fonts, and end with concise decisions for a supervisor.
 ---
 
 # Create Research Discussion Report
@@ -41,10 +41,15 @@ Read [references/report-structure.md](references/report-structure.md) before dra
 ### 4. Explain for an adjacent researcher
 
 - Define the main model or task in one short paragraph.
+- For iterative, alternating, solver-based, or three-stage-plus methods, begin the method section with compact pseudocode that exposes initialization, state transfer, fitting, selection, stopping, and final output.
+- Trace every recurring state from its first value through each update. State whether initialization is fixed, random, data-derived, warm-started, or solver-produced; include seeds, repeats, and invalid-state handling when they affect interpretation.
+- Map the complete objective to its procedural components. For any method variable absent from the top-level objective, identify it as an intermediate representation, auxiliary variable, fitted parameter, solver variable, selection metric, or final-evaluation quantity, and state where it enters the workflow.
 - Explain every comparison method in one or two sentences: its principle, role, and reason for inclusion.
 - Explain unfamiliar concepts where first used, including data splits, selection criteria, solver roles, Pareto/non-dominance, or hardware backends.
 - Prefer plain academic prose. Avoid tutorial detours and AI-styled headings.
 - Distinguish mechanism, candidate generation, fitting, selection, and final evaluation.
+
+Read [references/method-workflow.md](references/method-workflow.md) whenever the method has nontrivial initialization, iterative updates, multiple optimization stages, candidate generation and selection, or data-split-dependent fitting.
 
 ### 5. Author native Word mathematics
 
@@ -79,7 +84,8 @@ Use the installed `documents` capability for DOCX authoring and rendering. Reuse
 2. Render the latest DOCX through Word or the available DOCX renderer.
 3. Inspect every page at readable zoom.
 4. Check formulas, inline variables, fonts, table wrapping, repeated headers, page breaks, and footer fields.
-5. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
+5. Apply the method-completeness gate in `references/method-workflow.md`; do not accept a method section if a reader cannot reconstruct initialization, state transfer, selection, and final output without opening the code.
+6. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
 
 Do not deliver until structural audit and visual inspection both pass.
 
