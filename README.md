@@ -2,7 +2,7 @@
   <img src="./assets/readme/hero.svg" width="100%" alt="Create Research Discussion Report turns project evidence into a formula-native, decision-ready academic DOCX">
 </p>
 
-把研究仓库、实验记录和已有 Word 草稿整理成一份简洁、可核验、能直接与导师讨论的学术报告。
+把研究仓库、实验记录和已有 Word 草稿整理成一份简洁、可核验、能直接与他人讨论的学术报告。
 
 它关注的不是“把内容写得更多”，而是把项目状态组织成一条清楚的研究论证：**问题与目标 → 方法组件 → 分实验设置与结果 → 结论与边界 → 导师决策**。
 
