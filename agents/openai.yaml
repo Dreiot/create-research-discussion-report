@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Discussion Report"
+  short_description: "Build evidence-grounded academic discussion DOCX reports"
+  default_prompt: "Use $create-research-discussion-report to turn this project state into a concise advisor discussion report."
