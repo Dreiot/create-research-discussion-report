@@ -70,7 +70,7 @@ Read [references/method-workflow.md](references/method-workflow.md) only when th
 - Use italic for scalars and indices, bold italic for vectors and matrices, and upright type for functions, operators, digits, and transpose marks.
 - Prefer compact result tables. Show only the metrics and comparisons relevant to the user's question.
 - Use mean ± standard deviation by default when repeated runs are available, and state the aggregation unit once.
-- Center each table on the page. Center numeric headers and result cells; a descriptor column may remain left-aligned when that reads better.
+- Center each table on the page. Center every table-cell paragraph, including descriptor columns and headers; give table content no first-line indent, zero spacing before and after, and single line spacing.
 - In a comparable per-dataset result table, bold the complete displayed cell for the best method under each dataset, metric, budget, and experimental setting. Determine the best value from unrounded data, respect whether the metric is higher- or lower-is-better, and bold all exact ties.
 - Preserve negative and mixed results beside positive findings. Do not dump complete per-run rows when a summary answers the research question.
 
@@ -80,7 +80,7 @@ Read [references/math-and-results-style.md](references/math-and-results-style.md
 
 - Use 宋体 for Chinese text and Times New Roman for Latin text and mathematics.
 - Normalize run-level, style-level, and OMML font declarations; remove theme-font indirection.
-- Give ordinary body paragraphs a two-Chinese-character first-line indent. Do not apply it to titles, headings, table cells, captions, equations, lists, callouts, code blocks, source lines, or short labels.
+- Give ordinary body paragraphs a two-Chinese-character first-line indent. Do not apply it to titles, headings, captions, equations, lists, callouts, code blocks, source lines, or short labels. Table-cell paragraphs must instead use zero first-line indent, zero spacing before and after, single line spacing, and centered alignment.
 - Use restrained academic headings, compact tables, repeating table headers, and `w:cantSplit` on table rows.
 - Match the page count to the actual material. Do not pad the report to reach a target length or create blank spill pages.
 
@@ -92,7 +92,7 @@ Use the installed `documents` capability for DOCX authoring and rendering. Reuse
 2. Render the latest DOCX through Word or the available DOCX renderer.
 3. Inspect every page at readable zoom.
 4. Check formulas, fonts, table wrapping, repeated headers, page breaks, and footer fields.
-5. Confirm that tables are centered and that every comparable per-dataset result cell with the best method is correctly bolded, including ties.
+5. Confirm that tables and all table-cell content are centered, table paragraphs have no first-line indent or spacing before/after and use single line spacing, and every comparable per-dataset result cell with the best method is correctly bolded, including ties.
 6. Confirm that the visible report contains only the requested level of method detail and results.
 7. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
 

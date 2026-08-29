@@ -20,7 +20,8 @@ Include only equations needed for the report's argument. Explain a symbol at fir
 
 - Show only the metrics and comparisons relevant to the requested discussion.
 - When repeated runs are available, use `平均值 ± 标准差` by default and state the aggregation unit once.
-- Center the table object on the page. Center numeric column headers and result cells; keep a descriptor column left-aligned only when this materially improves reading.
+- Center the table object on the page and center every table-cell paragraph, including headers and descriptor columns.
+- Give every table-cell paragraph zero first-line indentation, zero spacing before and after, and single line spacing. Do not inherit ordinary body-paragraph indentation or spacing inside a table.
 - In a comparable per-dataset result table, bold the complete numeric cell, including both mean and standard deviation, for the best method within each fixed dataset × metric × budget × experimental-setting comparison.
 - Decide the best method from unrounded values. Treat NMI, ACC, AUC, and similar scores as higher-is-better; treat loss, error, and runtime as lower-is-better only when the metric definition says so.
 - Bold all exact ties. If display rounding creates an apparent tie, either bold all displayed ties or increase the displayed precision; never show equal displayed values while bolding only one.

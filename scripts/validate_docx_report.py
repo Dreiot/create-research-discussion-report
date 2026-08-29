@@ -119,10 +119,11 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
     if len(centered_tables) != len(tables):
         errors.append(f"only {len(centered_tables)}/{len(tables)} tables are centered")
 
-    table_paragraphs = document.xpath(
-        ".//w:tc//w:p[.//w:t[normalize-space(.) != '']]", namespaces=NS
-    )
+    table_paragraphs = document.xpath(".//w:tc//w:p", namespaces=NS)
     zero_indent_table_paragraphs = []
+    zero_spacing_table_paragraphs = []
+    single_spacing_table_paragraphs = []
+    centered_table_paragraphs = []
     for paragraph in table_paragraphs:
         first_line_chars = paragraph.xpath(
             "string(w:pPr/w:ind/@w:firstLineChars)", namespaces=NS
@@ -138,11 +139,56 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
             and first_line_twips == "0"
         ):
             zero_indent_table_paragraphs.append(paragraph)
+
+        spacing = paragraph.xpath("w:pPr/w:spacing", namespaces=NS)
+        if spacing:
+            before = spacing[0].get(f"{{{W}}}before")
+            after = spacing[0].get(f"{{{W}}}after")
+            before_lines = spacing[0].get(f"{{{W}}}beforeLines")
+            after_lines = spacing[0].get(f"{{{W}}}afterLines")
+            before_auto = spacing[0].get(f"{{{W}}}beforeAutospacing")
+            after_auto = spacing[0].get(f"{{{W}}}afterAutospacing")
+            if (
+                before == "0"
+                and after == "0"
+                and before_lines in (None, "0")
+                and after_lines in (None, "0")
+                and before_auto in (None, "0")
+                and after_auto in (None, "0")
+            ):
+                zero_spacing_table_paragraphs.append(paragraph)
+
+            line = spacing[0].get(f"{{{W}}}line")
+            line_rule = spacing[0].get(f"{{{W}}}lineRule")
+            if line == "240" and line_rule == "auto":
+                single_spacing_table_paragraphs.append(paragraph)
+
+        alignment = paragraph.xpath("string(w:pPr/w:jc/@w:val)", namespaces=NS)
+        if alignment == "center":
+            centered_table_paragraphs.append(paragraph)
     if len(zero_indent_table_paragraphs) != len(table_paragraphs):
         errors.append(
             "only "
             f"{len(zero_indent_table_paragraphs)}/{len(table_paragraphs)} "
-            "non-empty table paragraphs explicitly reset first-line indent to zero"
+            "table paragraphs explicitly reset first-line indent to zero"
+        )
+    if len(zero_spacing_table_paragraphs) != len(table_paragraphs):
+        errors.append(
+            "only "
+            f"{len(zero_spacing_table_paragraphs)}/{len(table_paragraphs)} "
+            "table paragraphs explicitly set spacing before and after to zero"
+        )
+    if len(centered_table_paragraphs) != len(table_paragraphs):
+        errors.append(
+            "only "
+            f"{len(centered_table_paragraphs)}/{len(table_paragraphs)} "
+            "table paragraphs are centered"
+        )
+    if len(single_spacing_table_paragraphs) != len(table_paragraphs):
+        errors.append(
+            "only "
+            f"{len(single_spacing_table_paragraphs)}/{len(table_paragraphs)} "
+            "table paragraphs use single line spacing"
         )
 
     plain_text = "".join(
@@ -188,6 +234,9 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
         "protected_table_rows": len(protected_rows),
         "table_paragraphs": len(table_paragraphs),
         "zero_indent_table_paragraphs": len(zero_indent_table_paragraphs),
+        "zero_spacing_table_paragraphs": len(zero_spacing_table_paragraphs),
+        "single_spacing_table_paragraphs": len(single_spacing_table_paragraphs),
+        "centered_table_paragraphs": len(centered_table_paragraphs),
         "font_issues": font_issues,
         "theme_font_issues": theme_font_issues,
         "errors": errors,
@@ -214,7 +263,12 @@ def main() -> int:
             f"{result['centered_tables']}/{result['tables']} centered, "
             f"{result['protected_table_rows']}/{result['table_rows']} protected rows, "
             f"{result['zero_indent_table_paragraphs']}/{result['table_paragraphs']} "
-            "non-empty cell paragraphs with zero first-line indent"
+            "cell paragraphs with zero first-line indent, "
+            f"{result['zero_spacing_table_paragraphs']}/{result['table_paragraphs']} "
+            "with zero spacing, "
+            f"{result['single_spacing_table_paragraphs']}/{result['table_paragraphs']} "
+            "with single line spacing, "
+            f"{result['centered_table_paragraphs']}/{result['table_paragraphs']} centered"
         )
         print(f"Math styles: {result['math_styles']}")
         for warning in result["warnings"]:

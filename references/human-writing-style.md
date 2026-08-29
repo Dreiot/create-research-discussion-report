@@ -41,7 +41,7 @@ Keep a method's official short name when it functions as an identity. Explain it
 
 - Give ordinary body paragraphs an exact two-Chinese-character first-line indent.
 - In WordprocessingML, prefer `w:ind w:firstLineChars="200"` on the body or `Normal` style. This expresses two character units and is more robust than approximating the indent with points.
-- Explicitly reset table-cell paragraphs to zero first-line indentation so they do not inherit the body style.
+- Explicitly reset every table-cell paragraph to zero first-line indentation, zero spacing before and after, and single line spacing so it does not inherit body-paragraph formatting. Center all table-cell paragraphs, including headers and descriptor columns.
 - Do not indent titles, headings, table cells, captions, equations, lists, callouts, code blocks, source lines, or short labels.
 - Do not insert spaces or full-width spaces manually to imitate paragraph indentation.
 
