@@ -131,13 +131,7 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
         first_line_twips = paragraph.xpath(
             "string(w:pPr/w:ind/@w:firstLine)", namespaces=NS
         )
-        if (
-            first_line_chars == "0"
-            and first_line_twips in ("", "0")
-        ) or (
-            first_line_chars == ""
-            and first_line_twips == "0"
-        ):
+        if first_line_chars == "0" and first_line_twips == "0":
             zero_indent_table_paragraphs.append(paragraph)
 
         spacing = paragraph.xpath("w:pPr/w:spacing", namespaces=NS)
@@ -170,7 +164,7 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
         errors.append(
             "only "
             f"{len(zero_indent_table_paragraphs)}/{len(table_paragraphs)} "
-            "table paragraphs explicitly reset first-line indent to zero"
+            "table paragraphs explicitly reset both character and point first-line indent to zero"
         )
     if len(zero_spacing_table_paragraphs) != len(table_paragraphs):
         errors.append(

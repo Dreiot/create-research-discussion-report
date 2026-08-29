@@ -70,7 +70,7 @@ Read [references/method-workflow.md](references/method-workflow.md) only when th
 - Use italic for scalars and indices, bold italic for vectors and matrices, and upright type for functions, operators, digits, and transpose marks.
 - Prefer compact result tables. Show only the metrics and comparisons relevant to the user's question.
 - Use mean ± standard deviation by default when repeated runs are available, and state the aggregation unit once.
-- Center each table on the page. Center every table-cell paragraph, including descriptor columns and headers; give table content no first-line indent, zero spacing before and after, and single line spacing.
+- Center each table on the page. Center every table-cell paragraph, including descriptor columns and headers; give table content no first-line indent, zero spacing before and after, and single line spacing. When body style carries a character-based indent, explicitly reset both `w:firstLineChars` and `w:firstLine` to zero in table paragraphs so Word does not retain the inherited point-based indent.
 - In a comparable per-dataset result table, bold the complete displayed cell for the best method under each dataset, metric, budget, and experimental setting. Determine the best value from unrounded data, respect whether the metric is higher- or lower-is-better, and bold all exact ties.
 - Preserve negative and mixed results beside positive findings. Do not dump complete per-run rows when a summary answers the research question.
 
