@@ -1,4 +1,4 @@
 interface:
   display_name: "Research Discussion Report"
   short_description: "Create human-readable Chinese academic discussion DOCX reports"
-  default_prompt: "Use $create-research-discussion-report to turn the current method design and results into a concise Chinese academic discussion report with adaptive structure and human-readable terminology."
+  default_prompt: "Use $create-research-discussion-report to turn the current method design and results into a concise Chinese academic discussion report with adaptive structure, human-readable terminology, two-character body indentation, and centered result tables that bold each dataset's best method."

@@ -48,6 +48,7 @@ Read [references/source-grounding.md](references/source-grounding.md) when the p
 - Prefer connected academic prose over status labels, one-line fragments, internal identifiers, or repeated disclaimer boxes.
 - Use Chinese terminology by default. Give a necessary English abbreviation or exact code identity at first occurrence, then use the Chinese term or abbreviation consistently.
 - Keep exact variables, APIs, code identifiers, and standard abbreviations unchanged when translation would destroy identity, such as `Q_submit`, OLS, or TSK.
+- Keep official proper names in their established form when translation would make identification harder. This includes dataset and benchmark names such as `Caltech101-7`, `Reuters-1200`, `UCI Mfeat`, and `MHEALTH`, as well as official method, product, and corpus names.
 - Do not create a “证据来源” section or show Git SHAs, repository paths, hashes, internal workflow states, artifact identities, terminal strings, or similar implementation bookkeeping unless the user explicitly requests those details for the report.
 - Explain an unfamiliar comparison method in one or two sentences: its principle, experimental role, and reason for inclusion.
 - Mention a limitation once where it changes interpretation. Do not repeat the same boundary throughout the report.
@@ -69,6 +70,8 @@ Read [references/method-workflow.md](references/method-workflow.md) only when th
 - Use italic for scalars and indices, bold italic for vectors and matrices, and upright type for functions, operators, digits, and transpose marks.
 - Prefer compact result tables. Show only the metrics and comparisons relevant to the user's question.
 - Use mean ± standard deviation by default when repeated runs are available, and state the aggregation unit once.
+- Center each table on the page. Center numeric headers and result cells; a descriptor column may remain left-aligned when that reads better.
+- In a comparable per-dataset result table, bold the complete displayed cell for the best method under each dataset, metric, budget, and experimental setting. Determine the best value from unrounded data, respect whether the metric is higher- or lower-is-better, and bold all exact ties.
 - Preserve negative and mixed results beside positive findings. Do not dump complete per-run rows when a summary answers the research question.
 
 Read [references/math-and-results-style.md](references/math-and-results-style.md) before generating equations, tables, or numeric summaries.
@@ -77,6 +80,7 @@ Read [references/math-and-results-style.md](references/math-and-results-style.md
 
 - Use 宋体 for Chinese text and Times New Roman for Latin text and mathematics.
 - Normalize run-level, style-level, and OMML font declarations; remove theme-font indirection.
+- Give ordinary body paragraphs a two-Chinese-character first-line indent. Do not apply it to titles, headings, table cells, captions, equations, lists, callouts, code blocks, source lines, or short labels.
 - Use restrained academic headings, compact tables, repeating table headers, and `w:cantSplit` on table rows.
 - Match the page count to the actual material. Do not pad the report to reach a target length or create blank spill pages.
 
@@ -88,8 +92,9 @@ Use the installed `documents` capability for DOCX authoring and rendering. Reuse
 2. Render the latest DOCX through Word or the available DOCX renderer.
 3. Inspect every page at readable zoom.
 4. Check formulas, fonts, table wrapping, repeated headers, page breaks, and footer fields.
-5. Confirm that the visible report contains only the requested level of method detail and results.
-6. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
+5. Confirm that tables are centered and that every comparable per-dataset result cell with the best method is correctly bolded, including ties.
+6. Confirm that the visible report contains only the requested level of method detail and results.
+7. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
 
 Do not deliver until structural validation and visual inspection both pass.
 

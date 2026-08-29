@@ -20,6 +20,11 @@ Include only equations needed for the report's argument. Explain a symbol at fir
 
 - Show only the metrics and comparisons relevant to the requested discussion.
 - When repeated runs are available, use `平均值 ± 标准差` by default and state the aggregation unit once.
+- Center the table object on the page. Center numeric column headers and result cells; keep a descriptor column left-aligned only when this materially improves reading.
+- In a comparable per-dataset result table, bold the complete numeric cell, including both mean and standard deviation, for the best method within each fixed dataset × metric × budget × experimental-setting comparison.
+- Decide the best method from unrounded values. Treat NMI, ACC, AUC, and similar scores as higher-is-better; treat loss, error, and runtime as lower-is-better only when the metric definition says so.
+- Bold all exact ties. If display rounding creates an apparent tie, either bold all displayed ties or increase the displayed precision; never show equal displayed values while bolding only one.
+- Do not manufacture “best” highlighting in status, inventory, cost, or other non-comparable tables. Aggregate rows may be highlighted only when the report explicitly compares aggregate performance rather than per-dataset winners.
 - Convert rates to percentages when that improves readability and use consistent precision, normally two decimals.
 - Express absolute differences naturally, for example `提高 1.12 个百分点` or `降低 1.12 个百分点`; do not describe them as relative percentage changes.
 - Include confidence intervals, sample counts, wins/ties/losses, or missing fields only when they affect the conclusion or the user requests them.

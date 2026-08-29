@@ -19,6 +19,7 @@ If one of these details is scientifically necessary, translate it into ordinary 
 - Prefer the established Chinese academic term.
 - At first occurrence, write `中文名称（必要的英文缩写）`; afterwards use the Chinese term or abbreviation consistently.
 - Preserve exact variables, APIs, code identifiers, and standard abbreviations when translation would destroy identity, for example `Q_submit`, OLS, TSK, NMI, or ACC.
+- Preserve official dataset, benchmark, method, product, and corpus names when their established identity is English. Names such as `Caltech101-7`, `Reuters-1200`, `UCI Mfeat`, and `MHEALTH` should not be translated merely to make the surrounding prose look more Chinese.
 - Do not repeatedly alternate between Chinese and English names for the same concept.
 
 Prefer these forms in reader-facing prose:
@@ -35,6 +36,14 @@ Prefer these forms in reader-facing prose:
 | matched uniform | 同结构均匀权重对照 |
 
 Keep a method's official short name when it functions as an identity. Explain it once rather than translating it differently in each section.
+
+## Use a two-character first-line indent for body prose
+
+- Give ordinary body paragraphs an exact two-Chinese-character first-line indent.
+- In WordprocessingML, prefer `w:ind w:firstLineChars="200"` on the body or `Normal` style. This expresses two character units and is more robust than approximating the indent with points.
+- Explicitly reset table-cell paragraphs to zero first-line indentation so they do not inherit the body style.
+- Do not indent titles, headings, table cells, captions, equations, lists, callouts, code blocks, source lines, or short labels.
+- Do not insert spaces or full-width spaces manually to imitate paragraph indentation.
 
 ## Use natural academic prose
 

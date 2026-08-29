@@ -55,8 +55,21 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
     parts = load_parts(path)
     document = etree.fromstring(parts["word/document.xml"])
     settings = etree.fromstring(parts["word/settings.xml"])
+    styles = etree.fromstring(parts["word/styles.xml"])
     errors: list[str] = []
     warnings: list[str] = []
+
+    normal_styles = styles.xpath(".//w:style[@w:styleId='Normal']", namespaces=NS)
+    normal_first_line_chars = ""
+    if normal_styles:
+        normal_first_line_chars = normal_styles[0].xpath(
+            "string(w:pPr/w:ind/@w:firstLineChars)", namespaces=NS
+        )
+    if normal_first_line_chars != "200":
+        errors.append(
+            "Normal style first-line indent is "
+            f"{normal_first_line_chars!r}, expected w:firstLineChars='200'"
+        )
 
     display_math = len(document.xpath(".//m:oMathPara", namespaces=NS))
     all_math = len(document.xpath(".//m:oMath", namespaces=NS))
@@ -97,6 +110,41 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
     if len(protected_rows) != len(rows):
         errors.append(f"only {len(protected_rows)}/{len(rows)} table rows have w:cantSplit")
 
+    tables = document.xpath(".//w:tbl", namespaces=NS)
+    centered_tables = [
+        table
+        for table in tables
+        if table.xpath("string(w:tblPr/w:jc/@w:val)", namespaces=NS) == "center"
+    ]
+    if len(centered_tables) != len(tables):
+        errors.append(f"only {len(centered_tables)}/{len(tables)} tables are centered")
+
+    table_paragraphs = document.xpath(
+        ".//w:tc//w:p[.//w:t[normalize-space(.) != '']]", namespaces=NS
+    )
+    zero_indent_table_paragraphs = []
+    for paragraph in table_paragraphs:
+        first_line_chars = paragraph.xpath(
+            "string(w:pPr/w:ind/@w:firstLineChars)", namespaces=NS
+        )
+        first_line_twips = paragraph.xpath(
+            "string(w:pPr/w:ind/@w:firstLine)", namespaces=NS
+        )
+        if (
+            first_line_chars == "0"
+            and first_line_twips in ("", "0")
+        ) or (
+            first_line_chars == ""
+            and first_line_twips == "0"
+        ):
+            zero_indent_table_paragraphs.append(paragraph)
+    if len(zero_indent_table_paragraphs) != len(table_paragraphs):
+        errors.append(
+            "only "
+            f"{len(zero_indent_table_paragraphs)}/{len(table_paragraphs)} "
+            "non-empty table paragraphs explicitly reset first-line indent to zero"
+        )
+
     plain_text = "".join(
         document.xpath(".//w:t[not(ancestor::m:oMath)]/text()", namespaces=NS)
     )
@@ -133,9 +181,13 @@ def validate(path: Path, allow_plain_greek: bool, allow_internal_context: bool) 
         "inline_math": inline_math,
         "math_styles": dict(math_styles),
         "math_font": math_font,
-        "tables": len(document.xpath(".//w:tbl", namespaces=NS)),
+        "normal_first_line_chars": normal_first_line_chars,
+        "tables": len(tables),
+        "centered_tables": len(centered_tables),
         "table_rows": len(rows),
         "protected_table_rows": len(protected_rows),
+        "table_paragraphs": len(table_paragraphs),
+        "zero_indent_table_paragraphs": len(zero_indent_table_paragraphs),
         "font_issues": font_issues,
         "theme_font_issues": theme_font_issues,
         "errors": errors,
@@ -156,7 +208,14 @@ def main() -> int:
     else:
         print(f"DOCX: {result['path']}")
         print(f"OMML: {result['display_math']} display, {result['inline_math']} inline")
-        print(f"Tables: {result['protected_table_rows']}/{result['table_rows']} protected rows")
+        print(f"Body first-line indent: {result['normal_first_line_chars']!r} character units")
+        print(
+            "Tables: "
+            f"{result['centered_tables']}/{result['tables']} centered, "
+            f"{result['protected_table_rows']}/{result['table_rows']} protected rows, "
+            f"{result['zero_indent_table_paragraphs']}/{result['table_paragraphs']} "
+            "non-empty cell paragraphs with zero first-line indent"
+        )
         print(f"Math styles: {result['math_styles']}")
         for warning in result["warnings"]:
             print(f"WARNING: {warning}")
