@@ -1,4 +1,4 @@
 interface:
   display_name: "Research Discussion Report"
-  short_description: "Build evidence-grounded academic discussion DOCX reports"
-  default_prompt: "Use $create-research-discussion-report to turn this project state into a concise advisor discussion report with explicit initialization and an end-to-end method workflow."
+  short_description: "Create human-readable Chinese academic discussion DOCX reports"
+  default_prompt: "Use $create-research-discussion-report to turn the current method design and results into a concise Chinese academic discussion report with adaptive structure and human-readable terminology."

@@ -1,83 +1,39 @@
-# Method workflow and initialization
+# Method explanation depth
 
-Use this reference for iterative, alternating, solver-based, multi-stage, or candidate-selection methods. The goal is not to reproduce a derivation; it is to let a neighboring researcher reconstruct one complete optimization pass without reading the code.
+Use the least detail that lets the intended reader understand the design and the reported result.
 
-## 1. Start with a compact algorithm view
+## Choose a depth level
 
-Place concise pseudocode near the beginning of the method section when the method has at least three dependent stages, nontrivial initialization, repeated updates, candidate generation and selection, or different data splits serving different roles.
+### Compact overview
 
-Show, in order:
+Use by default for progress summaries and result-focused reports. State:
 
-1. Inputs, fixed hyperparameters, and data partitions.
-2. Initialization of every state used in the first update.
-3. The main transformation, optimization, or candidate-generation steps.
-4. Parameter fitting or refitting performed for each candidate.
-5. Selection criterion and deterministic tie-breaking when present.
-6. Stopping condition or fixed iteration/repeat budget.
-7. Final refit and final output.
+- the task and inputs;
+- the objective or central design idea;
+- the role of the important components;
+- the output used by the experiments.
 
-Keep the pseudocode conceptual and evidence-bound. Do not invent implementation details that are absent from the approved sources.
+Do not add pseudocode, initialization details, or every alternating update unless they are needed for the discussion.
 
-## 2. Make initialization explicit
+### Component explanation
 
-For every model state, latent representation, mask, projection, center, weight, or solver variable used before its first update, state:
+Use when the report compares design choices or mechanisms. Explain the inputs, transformation, output, and purpose of each component that affects the comparison. Include only the state transfer needed to understand the tested hypothesis.
 
-- its initial value or construction rule;
-- whether it is fixed, random, data-derived, warm-started, or solver-produced;
-- which data partition is used to construct it;
-- its dimensions when dimensions prevent ambiguity;
-- the random seed and repeat mechanism when randomness matters;
-- how invalid states such as an empty subset, all-zero mask, singular system, or failed solver result are handled.
+### Reconstructable workflow
 
-If there is no unique initial solution, say so directly. For example, distinguish a fixed rule library from multiple solver-generated nonempty candidate masks.
+Use only when the user requests a technical method explanation or when the scientific interpretation depends on exact execution details. Then show, as applicable:
 
-When an initial state produces the first intermediate representation, show that transfer explicitly, such as initial projection to latent representation, raw firing to normalized firing, or candidate mask to refitted model.
+1. inputs, fixed parameters, and data partitions;
+2. initialization of states used by the first update;
+3. the main transformations or optimization steps;
+4. candidate generation, fitting, and selection;
+5. stopping conditions or fixed budgets;
+6. final output and evaluation boundary.
 
-## 3. Connect objective, components, and variables
+Keep the workflow conceptual and source-grounded. Do not invent implementation details absent from the current code or design.
 
-After presenting the complete objective, explain what the objective does and does not optimize. Map each objective term to the component or update that realizes it.
+## Explain only consequential details
 
-For every important variable that does not appear in the top-level objective, assign one role:
+Include a seed, fallback, invalid-state rule, solver setting, or intermediate variable only when it affects reproducibility, a comparison, or the interpretation of a result. Otherwise omit it from the main report.
 
-- intermediate representation;
-- auxiliary optimization variable;
-- parameter fitted conditionally after candidate generation;
-- solver encoding or submitted coefficient;
-- validation or selection metric;
-- threshold or decision rule;
-- final-evaluation quantity.
-
-State where the variable is created, what consumes it next, and whether it changes the optimized energy, the fitted predictor, the selected structure, or only the reported evaluation.
-
-Do not imply that minimizing a candidate-generation objective automatically minimizes validation error or yields the final trained model unless the evidence explicitly proves that equivalence.
-
-## 4. Preserve stage and data boundaries
-
-Keep these stages visibly distinct when applicable:
-
-| Stage | Required explanation |
-| --- | --- |
-| Mechanism | The mathematical relation or inductive bias being introduced |
-| Candidate generation | What is searched or proposed and under which objective |
-| Fitting or refitting | Which parameters are estimated for a fixed candidate |
-| Structure selection | Which split, metric, and tie-break choose among candidates |
-| Final refit | Which data are reused after the structure is frozen |
-| Final evaluation | Which protected or held-out data are accessed, and whether this has actually occurred |
-
-If the current evidence stops before final evaluation, end the algorithm at the verified boundary and label all later steps as protocol, not completed results.
-
-## 5. Method-completeness gate
-
-Before accepting the report, verify that a reader can answer all of the following from the document alone:
-
-- What is the first computable state after the raw input?
-- How is every state needed by the first update initialized?
-- What passes from one component to the next?
-- Which objective term or procedural role explains each important variable?
-- How are candidates generated, fitted, compared, and selected?
-- What stops the optimization or fixes its budget?
-- Which data partition is used at every stage?
-- What is refitted after selection, and what is the final output?
-- Which steps are verified results and which remain planned protocol?
-
-If any answer requires opening source code or relying on project history, add one concise explanation, equation, symbol-table entry, or pseudocode line to the report.
+If detailed workflow is useful but would interrupt the main narrative, place it in a compact appendix only when the user wants that depth.

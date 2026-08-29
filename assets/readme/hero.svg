@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
   <title id="title">Create Research Discussion Report</title>
-  <desc id="desc">A research evidence pipeline that turns project authorities into an objective, method, experiments, conclusions, and advisor decisions in a verified Word report.</desc>
+  <desc id="desc">A human-readable Chinese academic report workflow that turns concrete method designs and experiment results into a verified Word document.</desc>
 
   <rect width="1200" height="390" rx="24" fill="#F7F6F2"/>
   <path d="M52 56H1148" stroke="#C9D1DA" stroke-width="1"/>
@@ -10,32 +10,32 @@
     <text x="0" y="0" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="1.4">CODEX SKILL · ACADEMIC DOCX</text>
     <text x="0" y="62" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="48" font-weight="760">Create Research</text>
     <text x="0" y="116" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="48" font-weight="760">Discussion Report</text>
-    <text x="0" y="160" fill="#4E5D6C" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="21">把零散项目状态整理为证据充分、公式原生、可供导师决策的 Word 报告</text>
+    <text x="0" y="160" fill="#4E5D6C" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="21">把具体设计与实验结果整理为中文优先、结构自然、公式原生的 Word 报告</text>
 
     <g transform="translate(0 198)">
       <rect x="0" y="0" width="118" height="30" rx="15" fill="#11233F"/>
       <text x="59" y="20" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">NATIVE OMML</text>
       <rect x="130" y="0" width="148" height="30" rx="15" fill="#E5EBF1"/>
-      <text x="204" y="20" text-anchor="middle" fill="#23364D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">EVIDENCE BOUND</text>
+      <text x="204" y="20" text-anchor="middle" fill="#23364D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">CHINESE FIRST</text>
       <rect x="290" y="0" width="154" height="30" rx="15" fill="#E5EBF1"/>
       <text x="367" y="20" text-anchor="middle" fill="#23364D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">RENDER VERIFIED</text>
     </g>
   </g>
 
   <g transform="translate(720 44)">
-    <text x="0" y="0" fill="#6B7785" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">RESEARCH ARGUMENT / 05 STAGES</text>
+    <text x="0" y="0" fill="#6B7785" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">ADAPTIVE CONTENT / PROJECT STAGE</text>
 
     <g transform="translate(0 24)">
       <rect width="418" height="52" rx="8" fill="#11233F"/>
-      <text x="18" y="22" fill="#AFC4D7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">01 · AUTHORITY</text>
-      <text x="18" y="40" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="650">项目权威与证据边界</text>
-      <text x="392" y="34" text-anchor="end" fill="#7FB3DD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">AGENTS / CORE / STAGE</text>
+      <text x="18" y="22" fill="#AFC4D7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">QUESTION · DESIGN</text>
+      <text x="18" y="40" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="650">研究问题与当前设计</text>
+      <text x="392" y="34" text-anchor="end" fill="#7FB3DD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">METHOD / CODE</text>
     </g>
 
     <path d="M28 76V92" stroke="#1C5D99" stroke-width="2"/>
     <g transform="translate(0 92)">
       <rect width="418" height="52" rx="8" fill="#E3E9EF"/>
-      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">02 · OBJECTIVE</text>
+      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">METHOD</text>
       <text x="18" y="40" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="650">目标函数 · 变量 · 组件</text>
       <text x="392" y="34" text-anchor="end" fill="#334A62" font-family="Georgia, Songti SC, serif" font-size="16" font-style="italic">min J(θ)</text>
     </g>
@@ -43,20 +43,20 @@
     <path d="M28 144V160" stroke="#1C5D99" stroke-width="2"/>
     <g transform="translate(0 160)">
       <rect width="418" height="52" rx="8" fill="#E3E9EF"/>
-      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">03 · EXPERIMENT</text>
-      <text x="18" y="40" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="650">设置 → 对比理由 → 结果 → 分析</text>
+      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">RESULTS</text>
+      <text x="18" y="40" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="650">协议 · 对比方法 · 结果分析</text>
       <text x="392" y="34" text-anchor="end" fill="#334A62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">95.34%</text>
     </g>
 
     <path d="M28 212V228" stroke="#1C5D99" stroke-width="2"/>
     <g transform="translate(0 228)">
       <rect width="418" height="52" rx="8" fill="#D5E4F0"/>
-      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">04–05 · DECISION</text>
-      <text x="18" y="40" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="700">结论 · 后续方向 · 待决策问题</text>
+      <text x="18" y="22" fill="#1C5D99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">SYNTHESIS</text>
+      <text x="18" y="40" fill="#11233F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="16" font-weight="700">阶段认识 · 后续方向（按需）</text>
       <circle cx="392" cy="28" r="8" fill="#1C5D99"/>
     </g>
   </g>
 
   <text x="58" y="360" fill="#6B7785" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">宋体 + TIMES NEW ROMAN</text>
-  <text x="1142" y="360" text-anchor="end" fill="#6B7785" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">DOCX · OMML · CLAIM CEILING · PAGE QA</text>
+  <text x="1142" y="360" text-anchor="end" fill="#6B7785" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">DOCX · OMML · HUMAN READABLE · PAGE QA</text>
 </svg>

@@ -1,56 +1,48 @@
-# Report structure
+# Adaptive report structure
 
-## Default academic sequence
+Do not force every project into the same sequence. Build the report from the content blocks that answer the current research question.
 
-### 1 研究问题与优化目标
+## Start from the central discussion
 
-- State the task, data setting, and unresolved research question.
-- Introduce the model for readers who did not participate in the project.
-- Show the exact objective in native OMML.
-- Explain each variable immediately after the objective.
-- Add a compact symbol table when more than four symbols recur.
+Identify the one sentence the reader should understand after finishing the document. Arrange the report so that each section moves toward that understanding.
 
-### 2 方法
+Possible content blocks include:
 
-Split by mathematical or procedural component. For each component, answer:
+- research problem or current direction;
+- method objective and component overview;
+- a design choice and its alternatives;
+- an experiment protocol;
+- comparison methods and why they are relevant;
+- a preliminary, diagnostic, main, ablation, sensitivity, or failure result;
+- interpretation and implications;
+- a genuine unresolved choice.
 
-1. What goes in?
-2. What transformation or optimization occurs?
-3. What comes out?
-4. Why is the component necessary?
-5. What does current evidence not establish?
+Select only the blocks supported by the available material. A report does not need a main experiment, ablation section, appendix, or decision section merely because those blocks exist.
 
-Keep candidate generation, model fitting, structure selection, and final evaluation visibly separate.
+## Order blocks by research logic
 
-### 3 实验
+Useful patterns include, but are not limited to:
 
-Treat every experiment as one continuous evidence unit:
+- **Direction exploration:** question → candidate designs → diagnostic result → current direction.
+- **Method design:** problem → objective and components → key design choices → targeted validation → implication.
+- **Mid-stage progress:** current method → the most decision-relevant experiments → what changed in understanding → next bounded action.
+- **Result discussion:** protocol → comparison methods → compact results → interpretation and limitations.
+- **Integrated summary:** research aim → current design → representative experiments from different stages → consolidated conclusion.
 
-1. **设置与目的** — dataset, repeats, split, metric, budget, and hypothesis.
-2. **对比方法或概念说明** — principle of each comparator and why it is included.
-3. **结果** — compact table with denominators, counts, percentage formatting, and uncertainty when available.
-4. **分析** — supported interpretation, negative evidence, and boundary.
+These are examples, not templates. A diagnostic or ablation result may appear early when it determines the direction. A baseline explanation may sit directly before the result table it helps interpret.
 
-Do not place all settings in one distant section and all results in another. Do not describe a baseline only by name.
+## Keep each experiment understandable
 
-### 4 结论与后续方向
+For any experiment included, make clear:
 
-Summarize method status, strongest positive evidence, strongest negative evidence, and current claim ceiling. Keep the direction table short: direction, proposed action, and entry condition.
+1. what question it answers;
+2. the minimum settings needed to interpret it;
+3. what was compared and why;
+4. the summarized result;
+5. what the result changes or does not change.
 
-### 5 待决策问题
+Keep closely related settings, results, and interpretation together. Do not move all settings to a distant section if that makes the reader search backward.
 
-Ask four to seven questions that materially change scope, contribution, protocol, data, budget, or submission route. Avoid questions already answered by current authority documents.
+## End naturally
 
-## Outsider comprehension check
-
-A neighboring researcher should be able to answer:
-
-- What problem is being solved?
-- What exactly is optimized?
-- What does every component do?
-- Why was each baseline selected?
-- What did each experiment test?
-- Which conclusions are supported, mixed, negative, or unavailable?
-- What must the supervisor decide next?
-
-If any answer requires internal project history, add one concise explanation at first use.
+End with the strongest supported interpretation of the current project state. Add a next action or supervisor choice only when the material contains a genuine unresolved decision. Do not manufacture a fixed number of questions or generic future-work items.
