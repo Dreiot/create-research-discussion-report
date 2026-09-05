@@ -94,7 +94,7 @@ Use the installed `documents` capability for DOCX authoring and rendering. Reuse
 4. Check formulas, fonts, table wrapping, repeated headers, page breaks, and footer fields.
 5. Confirm that tables and all table-cell content are centered, table paragraphs have no first-line indent or spacing before/after and use single line spacing, and every comparable per-dataset result cell with the best method is correctly bolded, including ties.
 6. Confirm that the visible report contains only the requested level of method detail and results.
-7. Reopen the final target after overwrite and verify its hash or content identity against the accepted staging file.
+7. Reopen the final target after overwrite and verify its expected content and document structure against the accepted staging version; do not add a content hash for routine delivery.
 
 Do not deliver until structural validation and visual inspection both pass.
 
